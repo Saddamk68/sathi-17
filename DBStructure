@@ -1,0 +1,23 @@
+# Table Structure
+DROP TABLE IF EXISTS student_table;
+CREATE TABLE IF NOT EXISTS student_table(
+id BIGINT PRIMARY KEY AUTO_INCREMENT,
+first_name VARCHAR(20) NOT NULL,
+middle_name VARCHAR(20),
+last_name VARCHAR(20) NOT NULL,
+father_name VARCHAR(50) NOT NULL,
+mother_name VARCHAR(50) NOT NULL,
+school_name VARCHAR(50) NOT NULL,
+class_name INT NOT NULL,
+dob DATE NOT NULL,
+gender VARCHAR(10) NOT NULL,
+contact_num VARCHAR(10) NOT NULL,
+email VARCHAR(50) NOT NULL,
+address VARCHAR(255) NOT NULL,
+image_url VARCHAR(250) NOT NULL,
+created_by VARCHAR(30),
+created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+updated_by VARCHAR(30),
+updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+

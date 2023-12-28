@@ -31,6 +31,8 @@ public class StudentDTO {
 
 	private String email;
 
+	private String address;
+
 	private String imageUrl;
 	
 }
