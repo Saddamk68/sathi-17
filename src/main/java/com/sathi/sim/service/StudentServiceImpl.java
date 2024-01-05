@@ -8,17 +8,13 @@ import org.springframework.stereotype.Service;
 import com.sathi.sim.domain.Student;
 import com.sathi.sim.dto.StudentDTO;
 import com.sathi.sim.exception.InvalidRequestException;
-import com.sathi.sim.exception.ResourceNotFoundException;
 import com.sathi.sim.mapper.StudentMapper;
 import com.sathi.sim.repository.StudentRepository;
-import com.sathi.sim.util.Constants;
 import com.sathi.sim.validat.ValidateStudentDetails;
 
-import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-@Slf4j
 @Service
 public class StudentServiceImpl implements StudentService {
 

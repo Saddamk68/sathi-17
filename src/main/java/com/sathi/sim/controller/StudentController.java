@@ -1,7 +1,5 @@
 package com.sathi.sim.controller;
 
-import jakarta.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,33 +24,30 @@ import reactor.core.publisher.Mono;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/api/v1/student")
 public class StudentController {
 		
 	@Autowired
 	private StudentService studentService;
 	
-	@Valid
-	@PostMapping("/student")
+	@PostMapping()
 	public ResponseEntity<Mono<StudentDTO>> insertStudentDetail(@RequestBody Student studentDetail) {
 		Mono<StudentDTO> response = studentService.insertStudentDetail(studentDetail);
         return new ResponseEntity<>(response, HttpStatus.CREATED);
 	}
 
-	@Valid
-	@PutMapping("/updateStudentDetails")
+	@PutMapping()
 	public ResponseEntity<Mono<StudentDTO>> updateStudentDetails(@RequestBody Student student) {
         return new ResponseEntity<>(studentService.updateStudentDetails(student), HttpStatus.OK);
 	}
 
-	@Valid
 	@Transactional
-	@DeleteMapping("/deleteStudent/{studentId}")
+	@DeleteMapping("/{studentId}")
 	public void removeStudentDetails(@PathVariable(name = "studentId") Long studentId) {
 		studentService.removeStudentDetails(studentId);
 	}
 	
-	@GetMapping("/student/{id}")
+	@GetMapping("/{id}")
 	public ResponseEntity<Mono<StudentDTO>> getStudentDetailByStudentId(@PathVariable Long id) {
 		return new ResponseEntity<>(studentService.getStudentDetailByStudentId(id), HttpStatus.OK);
 	}
@@ -62,14 +57,9 @@ public class StudentController {
 		return new ResponseEntity<>(studentService.searchStudentByFirstName(name), HttpStatus.OK);
 	}
 
-	@GetMapping("/students")
+	@GetMapping()
 	public ResponseEntity<Flux<StudentDTO>> getAllStudentDetail() {
 		return new ResponseEntity<>(studentService.getAllStudentDetail(), HttpStatus.OK);
 	}
 	
-//	@GetMapping("/student/getRegistraionForm")
-//	public String showRegistrationPage() {
-//		return "RegistrationForm";
-//	}
-
 }
