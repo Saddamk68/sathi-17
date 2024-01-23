@@ -17,7 +17,9 @@ public interface StudentService {
 	public Mono<StudentDTO> getStudentDetailByStudentId(Long studentId);
 	
 	public Mono<StudentDTO> searchStudentByFirstName(String firstName);
+
+	public Flux<StudentDTO> getAllStudent();
 	
-	public Flux<StudentDTO> getAllStudentDetail();
+	public Flux<StudentDTO> getAllActiveStudent();
 	
 }

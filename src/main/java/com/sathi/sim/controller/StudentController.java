@@ -58,8 +58,8 @@ public class StudentController {
 	}
 
 	@GetMapping()
-	public ResponseEntity<Flux<StudentDTO>> getAllStudentDetail() {
-		return new ResponseEntity<>(studentService.getAllStudentDetail(), HttpStatus.OK);
+	public ResponseEntity<Flux<StudentDTO>> getAllActiveStudent() {
+		return new ResponseEntity<>(studentService.getAllActiveStudent(), HttpStatus.OK);
 	}
 	
 }

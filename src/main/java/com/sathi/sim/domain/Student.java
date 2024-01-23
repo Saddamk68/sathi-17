@@ -67,6 +67,9 @@ public class Student {
 
 	@Column(name = "address")
 	private String address;
+
+	@Column(name = "is_active", nullable = false, columnDefinition = "TINYINT(1)")
+	private Boolean isActive;
 	
 	@Column(name = "image_url")
 	private String imageUrl;

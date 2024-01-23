@@ -65,8 +65,14 @@ public class StudentServiceImpl implements StudentService {
 	}
 
 	@Override
-	public Flux<StudentDTO> getAllStudentDetail() {
+	public Flux<StudentDTO> getAllStudent() {
 		List<Student> studentList = studentRepo.findAll();
+		return Flux.fromIterable(mapper.studentToStudentDTOList(studentList));
+	}
+
+	@Override
+	public Flux<StudentDTO> getAllActiveStudent() {
+		List<Student> studentList = studentRepo.findByIsActive(true);
 		return Flux.fromIterable(mapper.studentToStudentDTOList(studentList));
 	}
 

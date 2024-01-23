@@ -33,6 +33,8 @@ public class StudentDTO {
 
 	private String address;
 
+	private Boolean isActive;
+
 	private String imageUrl;
 	
 }

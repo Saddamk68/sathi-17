@@ -17,8 +17,7 @@ public class StudentMapperImpl implements StudentMapper {
 	public StudentDTO studentToStudentDTO(Student student) {
 		if (student != null) {
 			StudentDTO studentDto = new StudentDTO();
-
-//			studentDto.setAge(student.getAge());
+			
 			studentDto.setContactNum(student.getContactNum());
 			studentDto.setEmail(student.getEmail());
 			studentDto.setFirstName(student.getFirstName());
@@ -34,6 +33,7 @@ public class StudentMapperImpl implements StudentMapper {
 			studentDto.setStudentId(student.getStudentId());
 			studentDto.setSchoolName(student.getSchoolName());
 			studentDto.setAddress(student.getAddress());
+			studentDto.setIsActive(student.getIsActive());
 			studentDto.setImageUrl(student.getImageUrl());
 
 			return studentDto;
