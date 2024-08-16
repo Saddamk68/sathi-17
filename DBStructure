@@ -14,7 +14,6 @@ gender VARCHAR(10) NOT NULL,
 contact_num VARCHAR(10) NOT NULL,
 email VARCHAR(50) NOT NULL,
 address_id BIGINT NOT NULL,
--- sub_id BIGINT NOT NULL,
 is_active TINYINT DEFAULT 1,
 image_url VARCHAR(250) NOT NULL,
 created_by VARCHAR(30),
@@ -68,6 +67,7 @@ VALUES (101, "MATH", NOW(), "admin", NOW(), "admin"),
 (103, "HINDI", NOW(), "admin", NOW(), "admin"),
 (104, "URDU", NOW(), "admin", NOW(), "admin"),
 (105, "SANSKRIT", NOW(), "admin", NOW(), "admin"),
-(106, "SOCIAL SCIENCE", NOW(), "admin", NOW(), "admin");
+(106, "SOCIAL SCIENCE", NOW(), "admin", NOW(), "admin"),
+(107, "SCIENCE", NOW(), "admin", NOW(), "admin");
 
 
