@@ -2,7 +2,6 @@ package com.sathi.sim.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import com.sathi.sim.domain.Subject;
 import com.sathi.sim.dto.SubjectDTO;
@@ -22,7 +21,7 @@ public class SubjectServiceImpl implements SubjectService {
 	private SubjectMapper subMapper;
 	
 	@Override
-	public Mono<SubjectDTO> createSubject(@RequestBody Subject subjectDetails) {
+	public Mono<SubjectDTO> createSubject(Subject subjectDetails) {
 		Subject subject = subRepo.save(subjectDetails);
 		return Mono.just(subMapper.subjectToSubjectDTO(subject));
 	}

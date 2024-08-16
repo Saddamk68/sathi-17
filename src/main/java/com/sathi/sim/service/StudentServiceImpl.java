@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import com.sathi.sim.domain.Student;
 import com.sathi.sim.dto.StudentDTO;
 import com.sathi.sim.exception.InvalidRequestException;
-import com.sathi.sim.mapper.AddressMapper;
 import com.sathi.sim.mapper.StudentMapper;
 import com.sathi.sim.repository.StudentRepository;
 import com.sathi.sim.validat.ValidateStudentDetails;

@@ -71,3 +71,18 @@ VALUES (101, "MATH", NOW(), "admin", NOW(), "admin"),
 (107, "SCIENCE", NOW(), "admin", NOW(), "admin");
 
 
+DROP TABLE IF EXISTS payment_table;
+CREATE TABLE IF NOT EXISTS payment_table(
+id BIGINT AUTO_INCREMENT PRIMARY KEY,
+student_id BIGINT,
+payment_amount DOUBLE NOT NULL,
+payment_date DATE NOT NULL,
+payment_remaining_amt DOUBLE,
+payment_remaining_amt_date DATE,
+payment_method VARCHAR(30),
+created_by VARCHAR(30),
+created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+updated_by VARCHAR(30),
+updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+

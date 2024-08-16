@@ -7,9 +7,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
 
 import com.sathi.sim.domain.Address;
-import com.sathi.sim.domain.Student;
 import com.sathi.sim.dto.AddressDTO;
-import com.sathi.sim.dto.StudentDTO;
 
 @Component
 public class AddressMapperImpl implements AddressMapper {

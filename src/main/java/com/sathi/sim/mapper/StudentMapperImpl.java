@@ -39,13 +39,14 @@ public class StudentMapperImpl implements StudentMapper {
 			studentDto.setGender(student.getGender());
 			studentDto.setStudentId(student.getStudentId());
 			studentDto.setSchoolName(student.getSchoolName());
+			studentDto.setIsActive(student.getIsActive());
+			studentDto.setImageUrl(student.getImageUrl());
+
 			studentDto.setAddress(addressMapper.addressToAddressDTO(student.getAddress()));
 			Set<String> subjects = student.getSubjects().stream()
 					.map(Subject::getSubName)
 					.collect(Collectors.toSet());
 			studentDto.setSubjects(subjects);
-			studentDto.setIsActive(student.getIsActive());
-			studentDto.setImageUrl(student.getImageUrl());
 
 			return studentDto;
 		}
