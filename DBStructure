@@ -49,3 +49,25 @@ created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 updated_by VARCHAR(30),
 updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+
+DROP TABLE IF EXISTS student_subject_table;
+CREATE TABLE IF NOT EXISTS student_subject_table(
+id BIGINT PRIMARY KEY AUTO_INCREMENT,
+student_id BIGINT NOT NULL,
+sub_id BIGINT NOT NULL,
+created_by VARCHAR(30),
+created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+updated_by VARCHAR(30),
+updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+INSERT INTO subject_table (sub_code, sub_name, created_at, created_by, updated_at, updated_by)
+VALUES (101, "MATH", NOW(), "admin", NOW(), "admin"),
+(102, "ENGLIS", NOW(), "admin", NOW(), "admin"),
+(103, "HINDI", NOW(), "admin", NOW(), "admin"),
+(104, "URDU", NOW(), "admin", NOW(), "admin"),
+(105, "SANSKRIT", NOW(), "admin", NOW(), "admin"),
+(106, "SOCIAL SCIENCE", NOW(), "admin", NOW(), "admin");
+
+
