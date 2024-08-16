@@ -1,6 +1,7 @@
 package com.sathi.sim.dto;
 
 import java.util.Date;
+import java.util.Set;
 
 import lombok.Data;
 
@@ -32,6 +33,8 @@ public class StudentDTO {
 	private String email;
 
 	private AddressDTO address;
+	
+	private Set<String> subjects;
 
 	private Boolean isActive;
 
