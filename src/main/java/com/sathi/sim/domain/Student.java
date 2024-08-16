@@ -1,16 +1,7 @@
 package com.sathi.sim.domain;
 
 import java.util.Date;
-
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EntityListeners;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
+import java.util.Set;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -18,9 +9,23 @@ import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EntityListeners;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 import lombok.Data;
 
-@Data	
+@Data
 @Entity
 @Table(name = "student_table")
 @EntityListeners(AuditingEntityListener.class)
@@ -55,7 +60,7 @@ public class Student {
 
 	@Column(name = "school_name")
 	private String schoolName;
-	
+
 	@Column(name = "class_name")
 	private Integer className;
 
@@ -65,12 +70,17 @@ public class Student {
 	@Column(name = "email", length = 50)
 	private String email;
 
-	@Column(name = "address")
-	private String address;
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "address_id", referencedColumnName = "id")
+	private Address address;
+
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "student_subject_table", joinColumns = @JoinColumn(name = "student_id"), inverseJoinColumns = @JoinColumn(name = "sub_id"))
+	private Set<Subject> subjects;
 
 	@Column(name = "is_active", nullable = false, columnDefinition = "TINYINT(1)")
 	private Boolean isActive;
-	
+
 	@Column(name = "image_url")
 	private String imageUrl;
 
@@ -91,5 +101,11 @@ public class Student {
 	@Column(name = "updated_by")
 	@LastModifiedBy
 	private String updatedBy;
+
+//	public String getFullName() {
+//		return (firstName != null ? firstName.strip() : "") 
+//				+ (middleName != null ? " " + middleName.strip() : "")
+//				+ (lastName != null ? " " + lastName.strip() : "");
+//	}
 
 }

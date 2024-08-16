@@ -8,6 +8,6 @@ import com.sathi.sim.domain.Subject;
 @Repository
 public interface SubjectRepository extends JpaRepository<Subject, Long> {
 	
-	Subject findBySubName(String subName);
-
+	Subject findBySubCode(String subCode);
+	
 }

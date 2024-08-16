@@ -31,10 +31,14 @@ public class StudentDTO {
 
 	private String email;
 
-	private String address;
+	private AddressDTO address;
 
 	private Boolean isActive;
 
 	private String imageUrl;
+
+//	public String getFullName() {
+//		return firstName.strip() + " " + middleName.strip() + " " + lastName.strip();
+//	}
 	
 }

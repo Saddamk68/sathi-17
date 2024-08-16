@@ -21,21 +21,21 @@ import lombok.Data;
 
 @Data	
 @Entity
-@Table(name = "subject_table")
+@Table(name = "student_subject_table")
 @EntityListeners(AuditingEntityListener.class)
-public class Subject {
+public class StudentSubject {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id", nullable = false)
 	private Long id;
 
-	@Column(name = "sub_code", unique = true, nullable = false, length = 10)
-	private String subCode;
+	@Column(name = "student_id", nullable = false, length = 10)
+	private Long studentId;
 
-	@Column(name = "sub_name", unique = true, nullable = false, length = 30)
-	private String subName;
-
+	@Column(name = "sub_id", nullable = false, length = 10)
+	private Long subId;
+	
 	@CreationTimestamp
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "created_at")

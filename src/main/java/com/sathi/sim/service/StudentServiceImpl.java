@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.sathi.sim.domain.Student;
 import com.sathi.sim.dto.StudentDTO;
 import com.sathi.sim.exception.InvalidRequestException;
+import com.sathi.sim.mapper.AddressMapper;
 import com.sathi.sim.mapper.StudentMapper;
 import com.sathi.sim.repository.StudentRepository;
 import com.sathi.sim.validat.ValidateStudentDetails;
@@ -22,7 +23,10 @@ public class StudentServiceImpl implements StudentService {
 	private StudentRepository studentRepo;
 
 	@Autowired
-	private StudentMapper mapper;
+	private StudentMapper studentMapper;
+
+//	@Autowired
+//	private AddressMapper addressMapper;
 
 	@Override
 	public Mono<StudentDTO> insertStudentDetail(Student studentDetail) {
@@ -30,7 +34,7 @@ public class StudentServiceImpl implements StudentService {
 			return Mono.error(new InvalidRequestException(ValidateStudentDetails.errMsg));
 		}
 		Student student = studentRepo.save(studentDetail);
-		return Mono.just(mapper.studentToStudentDTO(student));
+		return Mono.just(studentMapper.studentToStudentDTO(student));
 	}
 
 	@Override
@@ -39,7 +43,7 @@ public class StudentServiceImpl implements StudentService {
 			return Mono.error(new InvalidRequestException(ValidateStudentDetails.errMsg));
 		}
 		Student student = studentRepo.save(studentDetail);
-		return Mono.just(mapper.studentToStudentDTO(student));
+		return Mono.just(studentMapper.studentToStudentDTO(student));
 	}
 
 	@Override
@@ -55,25 +59,25 @@ public class StudentServiceImpl implements StudentService {
 //			return Mono.error(new ResourceNotFoundException(
 //					String.format(Constants.ERR_MSG_STUDENT_DET_NOT_FOUND_FOR_ID, studentId)));
 //		})).block();
-		return Mono.just(mapper.studentToStudentDTO(student));
+		return Mono.just(studentMapper.studentToStudentDTO(student));
 	}
 
 	@Override
 	public Mono<StudentDTO> searchStudentByFirstName(String firstName) {
 		Student student = studentRepo.findByFirstName(firstName);
-		return Mono.just(mapper.studentToStudentDTO(student));
+		return Mono.just(studentMapper.studentToStudentDTO(student));
 	}
 
 	@Override
 	public Flux<StudentDTO> getAllStudent() {
 		List<Student> studentList = studentRepo.findAll();
-		return Flux.fromIterable(mapper.studentToStudentDTOList(studentList));
+		return Flux.fromIterable(studentMapper.studentToStudentDTOList(studentList));
 	}
 
 	@Override
 	public Flux<StudentDTO> getAllActiveStudent() {
 		List<Student> studentList = studentRepo.findByIsActive(true);
-		return Flux.fromIterable(mapper.studentToStudentDTOList(studentList));
+		return Flux.fromIterable(studentMapper.studentToStudentDTOList(studentList));
 	}
 
 }

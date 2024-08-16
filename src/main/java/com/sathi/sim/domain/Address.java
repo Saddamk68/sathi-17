@@ -21,20 +21,29 @@ import lombok.Data;
 
 @Data	
 @Entity
-@Table(name = "subject_table")
+@Table(name = "address_table")
 @EntityListeners(AuditingEntityListener.class)
-public class Subject {
-
+public class Address {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id", nullable = false)
 	private Long id;
 
-	@Column(name = "sub_code", unique = true, nullable = false, length = 10)
-	private String subCode;
+	@Column(name = "first_line", nullable = false, length = 50)
+	private String firstLine;
 
-	@Column(name = "sub_name", unique = true, nullable = false, length = 30)
-	private String subName;
+	@Column(name = "second_line", length = 50)
+	private String secondLine;
+
+	@Column(name = "state", nullable = false, length = 30)
+	private String state;
+
+	@Column(name = "city", nullable = false, length = 30)
+	private String city;
+
+	@Column(name = "pin_code", nullable = false, length = 10)
+	private String pinCode;
 
 	@CreationTimestamp
 	@Temporal(TemporalType.TIMESTAMP)
