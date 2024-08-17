@@ -15,8 +15,8 @@ public final class Constants {
 
 	public static final String ERR_MSG_STUDENT_DET_NOT_FOUND_FOR_ID = "Student details not found for the given studentId : %s";
 	
-	public static final String EXCPT_MSG_DATE_CONVERSION_ISSUE = "Issue occured during date conversion : {}";
+	public static final String EXCPT_MSG_DATE_CONVERSION_ISSUE = "Please enter valid date yyyy-MM-dd : {}";
 
-	public static final String ERR_MSG_DATE_CONVERSION_ISSUE = "Issue occured during date conversion : %s";
+	public static final String ERR_MSG_DATE_CONVERSION_ISSUE = "Please enter valid date yyyy-MM-dd : %s";
 	
 }

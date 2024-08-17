@@ -14,11 +14,7 @@ public class PaymentDTO {
 	private Double amount;
 
 	private Date date;
-
-	private Double remainingAmt;
-
-	private Date remainingAmtDate;
-
+	
 	private String paymentMethod;	
 	
 }

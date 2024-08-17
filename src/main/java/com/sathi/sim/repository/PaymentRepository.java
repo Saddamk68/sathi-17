@@ -13,8 +13,6 @@ public interface PaymentRepository extends JpaRepository<Payment, Long> {
 	
 	Payment findByStudentId(Long studentId);
 
-	List<Payment> findByRemainingAmtGreaterThanEqual(Double remainingAmt);
-
-	List<Payment> findByRemainingAmtDateLessThanEqual(Date remainingAmtDate);
+	List<Payment> findByDateLessThanEqual(Date remainingAmtDate);
 	
 }

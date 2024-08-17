@@ -21,9 +21,9 @@ import lombok.Data;
 
 @Data	
 @Entity
-@Table(name = "payment_table")
+@Table(name = "fee_table")
 @EntityListeners(AuditingEntityListener.class)
-public class Payment {
+public class FeeDetail {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -33,15 +33,22 @@ public class Payment {
 	@Column(name = "student_id", nullable = false)
 	private Long studentId;
 
-	@Column(name = "payment_amount", nullable = false)
-	private Double amount;
+	@Column(name = "fee_total", nullable = false)
+	private Double totalFee;
+
+	@Column(name = "fee_deposit_amt")
+	private Double depositFeeAmt;
+	
+	@Temporal(TemporalType.DATE)
+	@Column(name = "fee_deposit_date")
+	private Date depositFeeDate;
+
+	@Column(name = "fee_remaining_amt", nullable = false)
+	private Double remainingFeeAmt;
 
 	@Temporal(TemporalType.DATE)
-	@Column(name = "payment_date")
-	private Date date;
-	
-	@Column(name = "payment_method")
-	private String paymentMethod;
+	@Column(name = "fee_remaining_date")
+	private Date remainingFeeDate;
 	
 	@CreationTimestamp
 	@Temporal(TemporalType.TIMESTAMP)

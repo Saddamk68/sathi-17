@@ -21,8 +21,6 @@ public class PaymentMapperImpl implements PaymentMapper {
 			paymentDto.setStudentId(payment.getStudentId());
 			paymentDto.setAmount(payment.getAmount());
 			paymentDto.setDate(payment.getDate());
-			paymentDto.setRemainingAmt(payment.getRemainingAmt());
-			paymentDto.setRemainingAmtDate(payment.getRemainingAmtDate());
 			paymentDto.setPaymentMethod(payment.getPaymentMethod());
 
 			return paymentDto;
