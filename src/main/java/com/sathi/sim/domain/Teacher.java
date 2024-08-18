@@ -1,77 +1,68 @@
 package com.sathi.sim.domain;
 
-import java.util.Date;
-
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EntityListeners;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.annotation.CreatedBy;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.LastModifiedBy;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import org.springframework.data.relational.core.mapping.Column;
+import org.springframework.data.relational.core.mapping.Table;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
+import lombok.Data;
 
-@Getter
-@Setter
-@ToString
-@Entity
-@Table(name = "teacher_table")
-@EntityListeners(AuditingEntityListener.class)
+@Data
+@Table("teacher_table")
 public class Teacher {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "tchr_id", nullable = false)
+	@Column("tchr_id")
 	private Long teacherId;
 
-	@Column(name = "tchr_name", nullable = false, length = 30)
+	@Column("tchr_name")
 	private String teacherName;
 
-	@Column(name = "tchr_gender", nullable = false, length = 10)
+	@Column("tchr_gender")
 	private String gender;
 
 	@Temporal(TemporalType.DATE)
-	@Column(name = "tchr_dob")
-	private Date tchrDOB;
+	@Column("tchr_dob")
+	private LocalDate tchrDOB;
 
-	@Column(name = "tchr_age")
+	@Column("tchr_age")
 	private Integer age;
 
-	@Column(name = "tchr_contact_num")
+	@Column("tchr_contact_num")
 	private Long contactNum;
 
-	@Column(name = "tchr_email_id", length = 50)
+	@Column("tchr_email_id")
 	private String email;
 
-	@Column(name = "tchr_sub_id")
+	@Column("tchr_sub_id")
 	private Long tchrSubId;
 
 	@CreationTimestamp
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "tchr_created_at", nullable = false)
-	private Date createdAt;
+	@Column("tchr_created_at")
+	private LocalDateTime createdAt;
 
-	@Column(name = "tchr_created_by", nullable = false)
+	@Column("tchr_created_by")
 	@CreatedBy
 	private String createdBy;
 
 	@UpdateTimestamp
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "tchr_updated_at", nullable = false)
-	private Date updatedAt;
+	@Column("tchr_updated_at")
+	private LocalDateTime updatedAt;
 
-	@Column(name = "tchr_updated_by", nullable = false)
+	@Column("tchr_updated_by")
 	@LastModifiedBy
 	private String updatedBy;
 

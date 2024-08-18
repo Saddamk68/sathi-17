@@ -33,19 +33,19 @@ public class FeeDetailServiceImpl implements FeeDetailService {
 
 	@Override
 	public Mono<FeeDetailDTO> createFeeDetail(FeeDetail feeDetail) {
-		FeeDetail fee = feeRepo.save(feeDetail);
+		FeeDetail fee = feeRepo.save(feeDetail).block();
 		return Mono.just(feeMapper.feeToFeeDTO(fee));
 	}
 
 	@Override
 	public Mono<FeeDetailDTO> getFeeDetailByStudentId(Long studentId) {
-		return Mono.just(feeMapper.feeToFeeDTO(feeRepo.findByStudentId(studentId)));
+		return Mono.just(feeMapper.feeToFeeDTO(feeRepo.findByStudentId(studentId).block()));
 	}
 
 	@Override
 	public Flux<FeeDetailDTO> getFeeDetailByRemainingFeeAmtMoreThan(Double remainingFeeAmt) {
 		return Flux.fromIterable(feeMapper.feeToFeeDTOList(
-				feeRepo.findByRemainingFeeAmtGreaterThanEqual(remainingFeeAmt)));
+				feeRepo.findByRemainingFeeAmtGreaterThanEqual(remainingFeeAmt).collectList().block()));
 	}
 
 	@Override
@@ -55,7 +55,7 @@ public class FeeDetailServiceImpl implements FeeDetailService {
 			if (DateValidation.isValidDate(remainingFeeAmtDate)) {
 				Date date = DateValidation.stringToDateConv(remainingFeeAmtDate);
 				response = feeMapper.feeToFeeDTOList(
-						feeRepo.findByRemainingFeeDateLessThanEqual(date));
+						feeRepo.findByRemainingFeeDateLessThanEqual(date).collectList().block());
 			}
 		} catch (InvalidDateException e) {
 			log.error(Constants.EXCPT_MSG_DATE_CONVERSION_ISSUE, remainingFeeAmtDate);

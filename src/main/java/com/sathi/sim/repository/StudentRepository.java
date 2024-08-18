@@ -1,21 +1,22 @@
 package com.sathi.sim.repository;
 
-import java.util.List;
-
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.r2dbc.repository.R2dbcRepository;
 import org.springframework.stereotype.Repository;
 
 import com.sathi.sim.domain.Student;
 
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
+
 @Repository
-public interface StudentRepository extends JpaRepository<Student, Long> {
+public interface StudentRepository extends R2dbcRepository<Student, Long> {
 
-	Student findByStudentId(Long studentId);
+	Mono<Student> findByStudentId(Long studentId);
 
-	Student findByFirstName(String firstName);
+	Mono<Student> findByFirstName(String firstName);
 
 	void deleteByStudentId(Long StudentId);
 	
-	List<Student> findByIsActive(Boolean isActive);
+	Flux<Student> findByIsActive(Boolean isActive);
 		
 }

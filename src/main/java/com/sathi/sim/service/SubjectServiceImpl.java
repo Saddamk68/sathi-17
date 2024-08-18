@@ -22,18 +22,18 @@ public class SubjectServiceImpl implements SubjectService {
 	
 	@Override
 	public Mono<SubjectDTO> createSubject(Subject subjectDetails) {
-		Subject subject = subRepo.save(subjectDetails);
+		Subject subject = subRepo.save(subjectDetails).block();
 		return Mono.just(subMapper.subjectToSubjectDTO(subject));
 	}
 	
 	@Override
 	public Flux<SubjectDTO> getAllSubjects() {
-		return Flux.fromIterable(subMapper.subjectToSubjectDTOList(subRepo.findAll()));
+		return Flux.fromIterable(subMapper.subjectToSubjectDTOList(subRepo.findAll().collectList().block()));
 	}
 
 	@Override
 	public Mono<SubjectDTO> getSubjectByCode(String subCode) {
-		return Mono.just(subMapper.subjectToSubjectDTO(subRepo.findBySubCode(subCode)));
+		return Mono.just(subMapper.subjectToSubjectDTO(subRepo.findBySubCode(subCode).block()));
 	}
 
 }

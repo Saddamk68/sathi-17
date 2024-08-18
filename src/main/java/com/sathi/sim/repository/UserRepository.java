@@ -1,12 +1,15 @@
 package com.sathi.sim.repository;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.r2dbc.repository.R2dbcRepository;
 import org.springframework.stereotype.Repository;
 
 import com.sathi.sim.domain.User;
 
+import reactor.core.publisher.Mono;
+
 @Repository
-public interface UserRepository extends JpaRepository<User, Long> {
+public interface UserRepository extends R2dbcRepository<User, Long> {
 	
-	User findByUserName(String userName);
+	Mono<User> findByUserName(String userName);
+	
 }

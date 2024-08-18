@@ -1,65 +1,60 @@
 package com.sathi.sim.domain;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.annotation.CreatedBy;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.LastModifiedBy;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import org.springframework.data.relational.core.mapping.Column;
+import org.springframework.data.relational.core.mapping.Table;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EntityListeners;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import lombok.Data;
 
-@Data	
-@Entity
-@Table(name = "address_table")
-@EntityListeners(AuditingEntityListener.class)
+@Data
+@Table("address_table")
 public class Address {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "id", nullable = false)
+	@Column("id")
 	private Long id;
 
-	@Column(name = "first_line", nullable = false, length = 50)
+	@Column("first_line")
 	private String firstLine;
 
-	@Column(name = "second_line", length = 50)
+	@Column("second_line")
 	private String secondLine;
 
-	@Column(name = "state", nullable = false, length = 30)
+	@Column("state")
 	private String state;
 
-	@Column(name = "city", nullable = false, length = 30)
+	@Column("city")
 	private String city;
 
-	@Column(name = "pin_code", nullable = false, length = 10)
+	@Column("pin_code")
 	private String pinCode;
 
 	@CreationTimestamp
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "created_at")
-	private Date createdAt;
+	@Column("created_at")
+	private LocalDateTime createdAt;
 
-	@Column(name = "created_by")
+	@Column("created_by")
 	@CreatedBy
 	private String createdBy;
 
 	@UpdateTimestamp
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "updated_at")
-	private Date updatedAt;
+	@Column("updated_at")
+	private LocalDateTime updatedAt;
 
-	@Column(name = "updated_by")
+	@Column("updated_by")
 	@LastModifiedBy
 	private String updatedBy;
 	

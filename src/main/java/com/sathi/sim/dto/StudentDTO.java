@@ -1,6 +1,6 @@
 package com.sathi.sim.dto;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.Set;
 
 import lombok.Data;
@@ -20,7 +20,7 @@ public class StudentDTO {
 
 	private String motherName;
 
-	private Date dob;
+	private LocalDate dob;
 
 	private String gender;
 

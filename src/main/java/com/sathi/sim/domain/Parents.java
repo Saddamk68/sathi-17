@@ -1,74 +1,65 @@
 package com.sathi.sim.domain;
 
-import java.util.Date;
-
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EntityListeners;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.annotation.CreatedBy;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.LastModifiedBy;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import org.springframework.data.relational.core.mapping.Column;
+import org.springframework.data.relational.core.mapping.Table;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
+import lombok.Data;
 
-@Getter
-@Setter
-@ToString
-@Entity
-@Table(name = "parents_table")
-@EntityListeners(AuditingEntityListener.class)
+@Data
+@Table("parents_table")
 public class Parents {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "parent_id", nullable = false)
+	@Column("parent_id")
 	private Long parentId;
 
-	@Column(name = "parent_name", nullable = false, length = 30)
+	@Column("parent_name")
 	private String parentName;
 
 	@Temporal(TemporalType.DATE)
-	@Column(name = "parent_dob")
-	private Date parentDOB;
+	@Column("parent_dob")
+	private LocalDate parentDOB;
 
-	@Column(name = "parent_age")
+	@Column("parent_age")
 	private Integer parentAge;
 
-	@Column(name = "parent_contact_num")
+	@Column("parent_contact_num")
 	private Long parentContactNum;
 
-	@Column(name = "user_email_address", length = 50)
+	@Column("user_email_address")
 	private String email;
 
-	@Column(name = "parent_occupation", length = 50)
+	@Column("parent_occupation")
 	private String occupation;
 
 	@CreationTimestamp
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "parent_created_at", nullable = false)
-	private Date createdAt;
+	@Column("parent_created_at")
+	private LocalDateTime createdAt;
 
-	@Column(name = "parent_created_by", nullable = false)
+	@Column("parent_created_by")
 	@CreatedBy
 	private String createdBy;
 
 	@UpdateTimestamp
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "parent_updated_at", nullable = false)
-	private Date updatedAt;
+	@Column("parent_updated_at")
+	private LocalDateTime updatedAt;
 
-	@Column(name = "parent_updated_by", nullable = false)
+	@Column("parent_updated_by")
 	@LastModifiedBy
 	private String updatedBy;
 

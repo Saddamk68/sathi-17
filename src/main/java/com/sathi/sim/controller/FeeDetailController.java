@@ -25,8 +25,8 @@ public class FeeDetailController {
 	private FeeDetailService feeService;
 
 	@PostMapping()
-	public ResponseEntity<Mono<FeeDetailDTO>> creatSubject(@RequestBody FeeDetail paymentDetails) {
-		return new ResponseEntity<>(feeService.createFeeDetail(paymentDetails), HttpStatus.CREATED);
+	public ResponseEntity<Mono<FeeDetailDTO>> creatSubject(@RequestBody FeeDetail feeDetails) {
+		return new ResponseEntity<>(feeService.createFeeDetail(feeDetails), HttpStatus.CREATED);
 	}
 
 	@GetMapping("/{studentId}")

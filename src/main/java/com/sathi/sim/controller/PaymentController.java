@@ -30,7 +30,7 @@ public class PaymentController {
 	}
 
 	@GetMapping("/{studentId}")
-	public ResponseEntity<Mono<PaymentDTO>> getPaymentByStudentId(@PathVariable(value = "studentId") Long studentId) {
+	public ResponseEntity<Flux<PaymentDTO>> getPaymentByStudentId(@PathVariable(value = "studentId") Long studentId) {
 		return new ResponseEntity<>(paymentService.getPaymentByStudentId(studentId), HttpStatus.OK);
 	}
 	

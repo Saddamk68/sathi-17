@@ -1,8 +1,7 @@
 package com.sathi.sim.service;
 
-import java.util.Collection;
+import java.time.LocalDate;
 import java.util.Collections;
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,23 +31,23 @@ public class PaymentServiceImpl implements PaymentService {
 	
 	@Override
 	public Mono<PaymentDTO> createPayment(Payment paymentDetail) {
-		Payment payment = paymentRepo.save(paymentDetail);
-		return Mono.just(paymentMapper.paymentToPaymentDTO(payment));
+//		Payment payment = paymentRepo.save(paymentDetail);
+		return Mono.just(paymentMapper.paymentToPaymentDTO(paymentRepo.save(paymentDetail).block()));
 	}
 	
 	@Override
-	public Mono<PaymentDTO> getPaymentByStudentId(Long studentId) {
-		return Mono.just(paymentMapper.paymentToPaymentDTO(paymentRepo.findByStudentId(studentId)));
+	public Flux<PaymentDTO> getPaymentByStudentId(Long studentId) {
+		return Flux.fromIterable(paymentMapper.paymentToPaymentDTOList(paymentRepo.findByStudentId(studentId).collectList().block()));
 	}
 	
 	@Override
 	public Flux<PaymentDTO> getPaymentByDateLessThanEqual(String paymentDate) {
 		List<PaymentDTO> response = Collections.EMPTY_LIST;
 		try {
-			if (DateValidation.isValidDate(paymentDate)) {
-				Date date = DateValidation.stringToDateConv(paymentDate);
+			if (DateValidation.isValidLocalDate(paymentDate)) {
+				LocalDate date = DateValidation.stringToLocalDateConv(paymentDate);
 				response = paymentMapper.paymentToPaymentDTOList(
-						paymentRepo.findByDateLessThanEqual(date));
+						paymentRepo.findByDateLessThanEqual(date).collectList().block());
 			}
 		} catch (InvalidDateException e) {
 			log.error(Constants.EXCPT_MSG_DATE_CONVERSION_ISSUE, paymentDate);
