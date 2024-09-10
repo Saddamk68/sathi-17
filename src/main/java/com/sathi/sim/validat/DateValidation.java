@@ -8,9 +8,6 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.Date;
 
-import com.sathi.sim.exception.InvalidDateException;
-import com.sathi.sim.util.Constants;
-
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -25,54 +22,42 @@ public class DateValidation {
 		simpleDateFormat.setLenient(false);
 	}
 
-	public static LocalDateTime stringToLocalDateTimeConv(String dateStr) throws InvalidDateException {
-		try {
-			return LocalDateTime.parse(dateStr, dateTimeformatter);
-		} catch (DateTimeParseException e) {
-			throw new InvalidDateException(String.format(Constants.ERR_MSG_DATE_CONVERSION_ISSUE, dateStr));
-		}
+	public static LocalDateTime stringToLocalDateTimeConv(String dateStr) {
+		return LocalDateTime.parse(dateStr, dateTimeformatter);
 	}
 
-	public static Boolean isValidLocalDateTime(String date) throws InvalidDateException {
+	public static Boolean isValidLocalDateTime(String date) {
 		try {
 			stringToLocalDateTimeConv(date);
 			return true;
-		} catch (InvalidDateException e) {
-			throw new InvalidDateException(String.format(Constants.ERR_MSG_DATE_CONVERSION_ISSUE, date));
-		}
-	}
-
-	public static LocalDate stringToLocalDateConv(String dateStr) throws InvalidDateException {
-		try {
-			return LocalDate.parse(dateStr, dateformatter);
 		} catch (DateTimeParseException e) {
-			throw new InvalidDateException(String.format(Constants.ERR_MSG_DATE_CONVERSION_ISSUE, dateStr));
+			return false;
 		}
 	}
 
-	public static Boolean isValidLocalDate(String date) throws InvalidDateException {
+	public static LocalDate stringToLocalDateConv(String dateStr) {
+		return LocalDate.parse(dateStr, dateformatter);
+	}
+
+	public static Boolean isValidLocalDate(String date) {
 		try {
 			stringToLocalDateConv(date);
 			return true;
-		} catch (InvalidDateException e) {
-			throw new InvalidDateException(String.format(Constants.ERR_MSG_DATE_CONVERSION_ISSUE, date));
+		} catch (DateTimeParseException e) {
+			return false;
 		}
 	}
 
-	public static Date stringToDateConv(String dateStr) throws InvalidDateException {
-		try {
-			return simpleDateFormat.parse(dateStr);
-		} catch (ParseException e) {
-			throw new InvalidDateException(String.format(Constants.ERR_MSG_DATE_CONVERSION_ISSUE, dateStr));
-		}
+	public static Date stringToDateConv(String dateStr) throws ParseException {
+		return simpleDateFormat.parse(dateStr);
 	}
 
-	public static Boolean isValidDate(String date) throws InvalidDateException {
+	public static Boolean isValidDate(String date) {
 		try {
 			stringToDateConv(date);
 			return true;
-		} catch (InvalidDateException e) {
-			throw new InvalidDateException(String.format(Constants.ERR_MSG_DATE_CONVERSION_ISSUE, date));
+		} catch (ParseException e) {
+			return false;
 		}
 	}
 

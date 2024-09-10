@@ -18,5 +18,17 @@ public final class Constants {
 	public static final String EXCPT_MSG_DATE_CONVERSION_ISSUE = "Please enter valid date yyyy-MM-dd : {}";
 
 	public static final String ERR_MSG_DATE_CONVERSION_ISSUE = "Please enter valid date yyyy-MM-dd : %s";
+
+	public static final String ERR_MSG_PAYMENT_DETAIL = "Error occured while fetching payment details";	
+
+	public static final String ERR_MSG_PAYMENT_SAVE_DET = "Error while saving payment details";
+	
+	public static final String ERR_MSG_PAYMENT_DET_NOT_FOUND_FOR_GIVEN_STUDENT_ID = "Payment details not found for given student id : %s";
+
+	public static final String EXCPT_MSG_PAYMENT_DET_NOT_FOUND_FOR_GIVEN_STUDENT_ID = "Payment details not found for given student id : {}";
+	
+	public static final String ERR_MSG_PAYMENT_DET_NOT_FOUND_FOR_GIVEN_DATE = "Payment details not found for given date : %s";
+
+	public static final String EXCPT_MSG_PAYMENT_DET_NOT_FOUND_FOR_GIVEN_DATE = "Payment details not found for given date : {}";
 	
 }
