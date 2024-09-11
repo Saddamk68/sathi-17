@@ -8,14 +8,17 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.Date;
 
+import com.sathi.sim.util.RegxPattern;
+
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class DateValidation {
 
-	private static final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-	private static final DateTimeFormatter dateformatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-	private static final DateTimeFormatter dateTimeformatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+	private static final SimpleDateFormat simpleDateFormat = new SimpleDateFormat(RegxPattern.DATE_PATTERN);
+	private static final DateTimeFormatter dateformatter = DateTimeFormatter.ofPattern(RegxPattern.DATE_PATTERN);
+	private static final DateTimeFormatter dateTimeformatter = DateTimeFormatter.ofPattern(RegxPattern.DATETIME_PATTERN);
+//	private static final DateTimeFormatter dateTimeformatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
 	static {
 		// to ensure strict data parsing

@@ -11,6 +11,13 @@ import org.springframework.web.context.request.WebRequest;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
+	@ExceptionHandler(FeeDetailsNotFound.class)
+	public ResponseEntity<?> paymentDetailNotFoundException(FeeDetailsNotFound ex, WebRequest request) {
+		ErrorResponse errorDetails = new ErrorResponse(new Date(), HttpStatus.NOT_FOUND.toString(), ex.getMessage(),
+				request.getDescription(false));
+		return new ResponseEntity<>(errorDetails, HttpStatus.NOT_FOUND);
+	}
+	
 	@ExceptionHandler(PaymentDetailsNotFound.class)
 	public ResponseEntity<?> paymentDetailNotFoundException(PaymentDetailsNotFound ex, WebRequest request) {
 		ErrorResponse errorDetails = new ErrorResponse(new Date(), HttpStatus.NOT_FOUND.toString(), ex.getMessage(),

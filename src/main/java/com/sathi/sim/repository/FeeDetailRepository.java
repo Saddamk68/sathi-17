@@ -1,6 +1,6 @@
 package com.sathi.sim.repository;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import org.springframework.data.r2dbc.repository.R2dbcRepository;
 import org.springframework.stereotype.Repository;
@@ -17,6 +17,6 @@ public interface FeeDetailRepository extends R2dbcRepository<FeeDetail, Long> {
 
 	Flux<FeeDetail> findByRemainingFeeAmtGreaterThanEqual(Double remainingFeeAmt);
 
-	Flux<FeeDetail> findByRemainingFeeDateLessThanEqual(Date remainingFeeDate);
+	Flux<FeeDetail> findByRemainingFeeDateLessThanEqual(LocalDate remainingFeeDate);
 	
 }

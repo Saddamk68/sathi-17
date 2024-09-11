@@ -31,12 +31,12 @@ public class PaymentServiceImpl implements PaymentService {
 	private PaymentMapper paymentMapper;
 	
 	@Override
-	public Mono<PaymentDTO> createPayment(Payment paymentDetail) {	    
+	public Mono<PaymentDTO> createPayment(Payment paymentDetail) {        
 	    return paymentRepo.save(paymentDetail)
 	            .map(paymentMapper::paymentToPaymentDTO)
 	            .onErrorResume(e -> {
-	                LOGGER.error(Constants.ERR_MSG_PAYMENT_SAVE_DET, e);
-	                return Mono.error(new RuntimeException(Constants.ERR_MSG_PAYMENT_SAVE_DET, e));
+	                LOGGER.error(Constants.ERR_SAVING_PAYMENT_DET, e);
+	                return Mono.error(new RuntimeException(Constants.ERR_SAVING_PAYMENT_DET, e));
 	            });
 	}
 	
@@ -58,7 +58,7 @@ public class PaymentServiceImpl implements PaymentService {
 	    }
 	    
 	    LocalDate date = DateValidation.stringToLocalDateConv(paymentDate);
-
+	    
 	    return paymentRepo.findByDateLessThanEqual(date)
 	            .switchIfEmpty(Flux.error(new PaymentDetailsNotFound(
 	                    String.format(Constants.ERR_MSG_PAYMENT_DET_NOT_FOUND_FOR_GIVEN_DATE, paymentDate))))
