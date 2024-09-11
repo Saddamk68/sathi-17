@@ -13,9 +13,9 @@ public interface StudentRepository extends R2dbcRepository<Student, Long> {
 
 	Mono<Student> findByStudentId(Long studentId);
 
-	Mono<Student> findByFirstName(String firstName);
+	Flux<Student> findByFirstName(String firstName);
 
-	void deleteByStudentId(Long StudentId);
+	Mono<Void> deleteByStudentId(Long StudentId);
 	
 	Flux<Student> findByIsActive(Boolean isActive);
 		

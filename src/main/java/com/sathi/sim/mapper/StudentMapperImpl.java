@@ -42,11 +42,11 @@ public class StudentMapperImpl implements StudentMapper {
 			studentDto.setIsActive(student.getIsActive());
 			studentDto.setImageUrl(student.getImageUrl());
 
-			studentDto.setAddress(addressMapper.addressToAddressDTO(student.getAddress()));
-			Set<String> subjects = student.getSubjects().stream()
-					.map(Subject::getSubName)
-					.collect(Collectors.toSet());
-			studentDto.setSubjects(subjects);
+//			studentDto.setAddress(addressMapper.addressToAddressDTO(student.getAddress()));
+//			Set<String> subjects = student.getSubjects().stream()
+//					.map(Subject::getSubName)
+//					.collect(Collectors.toSet());
+//			studentDto.setSubjects(subjects);
 
 			return studentDto;
 		}

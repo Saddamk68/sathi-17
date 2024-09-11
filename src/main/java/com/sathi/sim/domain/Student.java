@@ -66,15 +66,18 @@ public class Student {
 	@Column("email")
 	private String email;
 
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "address_id", referencedColumnName = "id")
-	private Address address;
-
-	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "student_subject_table", 
-		joinColumns = @JoinColumn(name = "student_id"), 
-		inverseJoinColumns = @JoinColumn(name = "sub_id"))
-	private Set<Subject> subjects;
+//	@ManyToOne(cascade = CascadeType.ALL)
+//	@JoinColumn(name = "address_id", referencedColumnName = "id")
+//	private Address address;
+//
+//	@ManyToMany(cascade = CascadeType.ALL)
+//	@JoinTable(name = "student_subject_table", 
+//		joinColumns = @JoinColumn(name = "student_id"), 
+//		inverseJoinColumns = @JoinColumn(name = "sub_id"))
+//	private Set<Subject> subjects;
+	
+	@Column("address_id")
+	private Long addressId;
 
 	@Column("is_active")
 	private Boolean isActive;
