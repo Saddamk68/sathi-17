@@ -35,6 +35,8 @@ public class StudentDTO {
 
 	private String email;
 
+	private Long addressId;
+	
 	private AddressDTO address;
 	
 	private Set<String> subjects;

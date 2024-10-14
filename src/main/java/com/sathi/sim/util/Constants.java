@@ -61,4 +61,10 @@ public final class Constants {
 
 	public static final String ERR_MSG_NO_ACTIVE_STUDENT_RECORD_FOUND = "No active student records found";
 
+	public static final String ERR_SAVING_ADDRESS_DET = "Error occured while saving address details";
+
+	public static final String ERR_DELETE_ADDRESS_DET = "Error occured while deleting address details";
+
+	public static final String ERR_MSG_ADDR_DET_NOT_FOUND_FOR_GIVEN_ADDR_ID = "Address details not found for given address id : %s";
+	
 }

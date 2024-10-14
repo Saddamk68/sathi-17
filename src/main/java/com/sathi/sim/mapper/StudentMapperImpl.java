@@ -38,6 +38,7 @@ public class StudentMapperImpl implements StudentMapper {
 			studentDto.setDob(student.getDob());
 			studentDto.setGender(student.getGender());
 			studentDto.setStudentId(student.getStudentId());
+			studentDto.setAddressId(student.getAddressId());
 			studentDto.setSchoolName(student.getSchoolName());
 			studentDto.setIsActive(student.getIsActive());
 			studentDto.setImageUrl(student.getImageUrl());
