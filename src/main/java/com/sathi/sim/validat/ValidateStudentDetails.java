@@ -43,6 +43,9 @@ public class ValidateStudentDetails {
 			else 
 				studentDetail.setImageUrl("woman.png");
 		}
+		if (studentDetail.getAddressId() == null) {
+			studentDetail.setAddressId(Long.parseLong("0"));
+		}
 		return true;
 	}
 	

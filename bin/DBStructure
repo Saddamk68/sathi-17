@@ -1,0 +1,101 @@
+# Table Structure
+DROP TABLE IF EXISTS student_table;
+CREATE TABLE IF NOT EXISTS student_table(
+id BIGINT PRIMARY KEY AUTO_INCREMENT,
+first_name VARCHAR(20) NOT NULL,
+middle_name VARCHAR(20),
+last_name VARCHAR(20) NOT NULL,
+father_name VARCHAR(50) NOT NULL,
+mother_name VARCHAR(50) NOT NULL,
+school_name VARCHAR(50) NOT NULL,
+class_name INT NOT NULL,
+dob DATE NOT NULL,
+gender VARCHAR(10) NOT NULL,
+contact_num VARCHAR(10) NOT NULL,
+email VARCHAR(50) NOT NULL,
+address_id BIGINT NOT NULL,
+is_active TINYINT DEFAULT 1,
+image_url VARCHAR(250) NOT NULL,
+created_by VARCHAR(30),
+created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+updated_by VARCHAR(30),
+updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+
+DROP TABLE IF EXISTS address_table;
+CREATE TABLE IF NOT EXISTS address_table(
+id BIGINT PRIMARY KEY AUTO_INCREMENT,
+first_line VARCHAR(50) NOT NULL,
+second_line VARCHAR(50),
+state VARCHAR(30) NOT NULL,
+city VARCHAR(30) NOT NULL,
+pin_code VARCHAR(30) NOT NULL,
+created_by VARCHAR(30),
+created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+updated_by VARCHAR(30),
+updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+
+DROP TABLE IF EXISTS subject_table;
+CREATE TABLE IF NOT EXISTS subject_table(
+id BIGINT PRIMARY KEY AUTO_INCREMENT,
+sub_code VARCHAR(10) NOT NULL,
+sub_name VARCHAR(30) NOT NULL,
+created_by VARCHAR(30),
+created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+updated_by VARCHAR(30),
+updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+
+DROP TABLE IF EXISTS student_subject_table;
+CREATE TABLE IF NOT EXISTS student_subject_table(
+id BIGINT PRIMARY KEY AUTO_INCREMENT,
+student_id BIGINT NOT NULL,
+sub_id BIGINT NOT NULL,
+created_by VARCHAR(30),
+created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+updated_by VARCHAR(30),
+updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+INSERT INTO subject_table (sub_code, sub_name, created_at, created_by, updated_at, updated_by)
+VALUES (101, "MATH", NOW(), "admin", NOW(), "admin"),
+(102, "ENGLIS", NOW(), "admin", NOW(), "admin"),
+(103, "HINDI", NOW(), "admin", NOW(), "admin"),
+(104, "URDU", NOW(), "admin", NOW(), "admin"),
+(105, "SANSKRIT", NOW(), "admin", NOW(), "admin"),
+(106, "SOCIAL SCIENCE", NOW(), "admin", NOW(), "admin"),
+(107, "SCIENCE", NOW(), "admin", NOW(), "admin");
+
+
+DROP TABLE IF EXISTS payment_table;
+CREATE TABLE IF NOT EXISTS payment_table(
+id BIGINT AUTO_INCREMENT PRIMARY KEY,
+student_id BIGINT,
+payment_amount DOUBLE NOT NULL,
+payment_date DATE NOT NULL,
+payment_method VARCHAR(30),
+created_by VARCHAR(30),
+created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+updated_by VARCHAR(30),
+updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+
+DROP TABLE IF EXISTS fee_table;
+CREATE TABLE IF NOT EXISTS fee_table(
+id BIGINT AUTO_INCREMENT PRIMARY KEY,
+student_id BIGINT,
+fee_total DOUBLE NOT NULL,
+fee_deposit_amt DOUBLE,
+fee_deposit_date DATE,
+fee_remaining_amt DOUBLE,
+fee_remaining_date DATE,
+created_by VARCHAR(30),
+created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+updated_by VARCHAR(30),
+updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
