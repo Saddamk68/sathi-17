@@ -1,13 +1,15 @@
 package com.sathi.sim.repository;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.r2dbc.repository.R2dbcRepository;
 import org.springframework.stereotype.Repository;
 
 import com.sathi.sim.domain.Subject;
 
+import reactor.core.publisher.Mono;
+
 @Repository
-public interface SubjectRepository extends JpaRepository<Subject, Long> {
+public interface SubjectRepository extends R2dbcRepository<Subject, Long> {
 	
-	Subject findBySubCode(String subCode);
+	Mono<Subject> findBySubCode(String subCode);
 	
 }

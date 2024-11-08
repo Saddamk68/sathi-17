@@ -1,20 +1,22 @@
 package com.sathi.sim.repository;
 
-import java.util.Date;
-import java.util.List;
+import java.time.LocalDate;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.r2dbc.repository.R2dbcRepository;
 import org.springframework.stereotype.Repository;
 
 import com.sathi.sim.domain.FeeDetail;
 
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
+
 @Repository
-public interface FeeDetailRepository extends JpaRepository<FeeDetail, Long> {
+public interface FeeDetailRepository extends R2dbcRepository<FeeDetail, Long> {
 	
-	FeeDetail findByStudentId(Long studentId);
+	Mono<FeeDetail> findByStudentId(Long studentId);
 
-	List<FeeDetail> findByRemainingFeeAmtGreaterThanEqual(Double remainingFeeAmt);
+	Flux<FeeDetail> findByRemainingFeeAmtGreaterThanEqual(Double remainingFeeAmt);
 
-	List<FeeDetail> findByRemainingFeeDateLessThanEqual(Date remainingFeeDate);
+	Flux<FeeDetail> findByRemainingFeeDateLessThanEqual(LocalDate remainingFeeDate);
 	
 }

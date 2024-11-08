@@ -1,63 +1,59 @@
 package com.sathi.sim.domain;
 
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.annotation.CreatedBy;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.LastModifiedBy;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import org.springframework.data.relational.core.mapping.Column;
+import org.springframework.data.relational.core.mapping.Table;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EntityListeners;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import lombok.Data;
 
 @Data	
-@Entity
-@Table(name = "payment_table")
-@EntityListeners(AuditingEntityListener.class)
+@Table("payment_table")
 public class Payment {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "id", nullable = false)
+	@Column("id")
 	private Long id;
 
-	@Column(name = "student_id", nullable = false)
+	@Column("student_id")
 	private Long studentId;
 
-	@Column(name = "payment_amount", nullable = false)
+	@Column("payment_amount")
 	private Double amount;
 
 	@Temporal(TemporalType.DATE)
-	@Column(name = "payment_date")
-	private Date date;
+	@Column("payment_date")
+	private LocalDate date;
 	
-	@Column(name = "payment_method")
+	@Column("payment_method")
 	private String paymentMethod;
 	
 	@CreationTimestamp
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "created_at")
-	private Date createdAt;
+	@Column("created_at")
+	private LocalDateTime createdAt;
 
-	@Column(name = "created_by")
+	@Column("created_by")
 	@CreatedBy
 	private String createdBy;
 
 	@UpdateTimestamp
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "updated_at")
-	private Date updatedAt;
+	@Column("updated_at")
+	private LocalDateTime updatedAt;
 
-	@Column(name = "updated_by")
+	@Column("updated_by")
 	@LastModifiedBy
 	private String updatedBy;
 	

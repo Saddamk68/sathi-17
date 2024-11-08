@@ -10,7 +10,7 @@ public interface PaymentService {
 
 	Mono<PaymentDTO> createPayment(Payment paymentDetails);
 
-	Mono<PaymentDTO> getPaymentByStudentId(Long studentId);
+	Flux<PaymentDTO> getPaymentByStudentId(Long studentId);
 	
 	Flux<PaymentDTO> getPaymentByDateLessThanEqual(String paymentDate);
 

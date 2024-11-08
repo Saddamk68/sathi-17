@@ -1,13 +1,15 @@
 package com.sathi.sim.repository;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.r2dbc.repository.R2dbcRepository;
 import org.springframework.stereotype.Repository;
 
 import com.sathi.sim.domain.Parents;
 
-@Repository
-public interface ParentsRepository extends JpaRepository<Parents, Long> {
+import reactor.core.publisher.Mono;
 
-	Parents findByParentId(Long parentId);
+@Repository
+public interface ParentsRepository extends R2dbcRepository<Parents, Long> {
+
+	Mono<Parents> findByParentId(Long parentId);
 	
 }

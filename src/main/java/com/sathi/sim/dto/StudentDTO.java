@@ -1,7 +1,8 @@
 package com.sathi.sim.dto;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.Set;
+import java.util.StringJoiner;
 
 import lombok.Data;
 
@@ -9,6 +10,8 @@ import lombok.Data;
 public class StudentDTO {
 
 	private Long studentId;
+
+	private String fullName;
 	
 	private String firstName;
 
@@ -20,7 +23,7 @@ public class StudentDTO {
 
 	private String motherName;
 
-	private Date dob;
+	private LocalDate dob;
 
 	private String gender;
 
@@ -32,6 +35,8 @@ public class StudentDTO {
 
 	private String email;
 
+	private Long addressId;
+	
 	private AddressDTO address;
 	
 	private Set<String> subjects;
@@ -40,8 +45,24 @@ public class StudentDTO {
 
 	private String imageUrl;
 
+	public String getFullName() {
+		this.fullName = firstName.strip() + " " + middleName.strip() + " " + lastName.strip();
+		return this.fullName;
+	}
+	
 //	public String getFullName() {
-//		return firstName.strip() + " " + middleName.strip() + " " + lastName.strip();
+//		StringJoiner joiner = new StringJoiner(" ");
+//		if (!firstName.isBlank()) {
+//			joiner.add(firstName.strip());
+//		}
+//		if (!middleName.isBlank()) {
+//			joiner.add(middleName.strip());
+//		}
+//		if (!lastName.isBlank()) {
+//			joiner.add(lastName.strip());
+//		}
+//		this.fullName = joiner.toString();
+//		return this.fullName;
 //	}
 	
 }

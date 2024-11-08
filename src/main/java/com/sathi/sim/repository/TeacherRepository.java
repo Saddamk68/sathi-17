@@ -1,15 +1,17 @@
 package com.sathi.sim.repository;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.r2dbc.repository.R2dbcRepository;
 import org.springframework.stereotype.Repository;
 
 import com.sathi.sim.domain.Teacher;
 
+import reactor.core.publisher.Mono;
+
 @Repository
-public interface TeacherRepository extends JpaRepository<Teacher, Long> {
+public interface TeacherRepository extends R2dbcRepository<Teacher, Long> {
 
-	Teacher findByTeacherId(Long teacherId);
+	Mono<Teacher> findByTeacherId(Long teacherId);
 
-	Teacher findByTeacherName(String teacherName);
+	Mono<Teacher> findByTeacherName(String teacherName);
 
 }

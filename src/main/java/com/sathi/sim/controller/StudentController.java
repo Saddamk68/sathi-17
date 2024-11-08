@@ -53,7 +53,7 @@ public class StudentController {
 	}
 
 	@GetMapping("/getStudenByName")
-	public ResponseEntity<Mono<StudentDTO>> searchStudentByFirstName(@RequestParam(name = "name") String name) {
+	public ResponseEntity<Flux<StudentDTO>> searchStudentByFirstName(@RequestParam(name = "name") String name) {
 		return new ResponseEntity<>(studentService.searchStudentByFirstName(name), HttpStatus.OK);
 	}
 

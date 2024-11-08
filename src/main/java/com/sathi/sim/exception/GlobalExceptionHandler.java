@@ -11,6 +11,41 @@ import org.springframework.web.context.request.WebRequest;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
+	@ExceptionHandler(StudentDetailsNotFound.class)
+	public ResponseEntity<?> studentDetailNotFoundException(StudentDetailsNotFound ex, WebRequest request) {
+		ErrorResponse errorDetails = new ErrorResponse(new Date(), HttpStatus.NOT_FOUND.toString(), ex.getMessage(),
+				request.getDescription(false));
+		return new ResponseEntity<>(errorDetails, HttpStatus.NOT_FOUND);
+	}
+
+	@ExceptionHandler(AddressDetailsNotFound.class)
+	public ResponseEntity<?> addressDetailNotFoundException(AddressDetailsNotFound ex, WebRequest request) {
+		ErrorResponse errorDetails = new ErrorResponse(new Date(), HttpStatus.NOT_FOUND.toString(), ex.getMessage(),
+				request.getDescription(false));
+		return new ResponseEntity<>(errorDetails, HttpStatus.NOT_FOUND);
+	}
+
+	@ExceptionHandler(SubjectDetailsNotFound.class)
+	public ResponseEntity<?> subjectDetailNotFoundException(SubjectDetailsNotFound ex, WebRequest request) {
+		ErrorResponse errorDetails = new ErrorResponse(new Date(), HttpStatus.NOT_FOUND.toString(), ex.getMessage(),
+				request.getDescription(false));
+		return new ResponseEntity<>(errorDetails, HttpStatus.NOT_FOUND);
+	}
+	
+	@ExceptionHandler(FeeDetailsNotFound.class)
+	public ResponseEntity<?> feeDetailNotFoundException(FeeDetailsNotFound ex, WebRequest request) {
+		ErrorResponse errorDetails = new ErrorResponse(new Date(), HttpStatus.NOT_FOUND.toString(), ex.getMessage(),
+				request.getDescription(false));
+		return new ResponseEntity<>(errorDetails, HttpStatus.NOT_FOUND);
+	}
+	
+	@ExceptionHandler(PaymentDetailsNotFound.class)
+	public ResponseEntity<?> paymentDetailNotFoundException(PaymentDetailsNotFound ex, WebRequest request) {
+		ErrorResponse errorDetails = new ErrorResponse(new Date(), HttpStatus.NOT_FOUND.toString(), ex.getMessage(),
+				request.getDescription(false));
+		return new ResponseEntity<>(errorDetails, HttpStatus.NOT_FOUND);
+	}
+	
 	@ExceptionHandler(ResourceNotFoundException.class)
 	public ResponseEntity<?> resourceNotFoundException(ResourceNotFoundException ex, WebRequest request) {
 		ErrorResponse errorDetails = new ErrorResponse(new Date(), HttpStatus.NOT_FOUND.toString(), ex.getMessage(),

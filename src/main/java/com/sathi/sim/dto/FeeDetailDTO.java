@@ -1,6 +1,6 @@
 package com.sathi.sim.dto;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import lombok.Data;
 
@@ -15,10 +15,10 @@ public class FeeDetailDTO {
 
 	private Double depositFeeAmt;
 
-	private Date depositFeeDate;
+	private LocalDate depositFeeDate;
 
 	private Double remainingFeeAmt;
 
-	private Date remainingFeeDate;
+	private LocalDate remainingFeeDate;
 	
 }

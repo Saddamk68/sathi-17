@@ -1,0 +1,24 @@
+INSERT INTO `address_table` (`id`, `first_line`, `second_line`, `state`, `city`, `pin_code`, `created_by`, `created_at`, `updated_by`, `updated_at`) 
+VALUES('1','Near Old Bus Stand','Behind the Jhan Kothi','Madhya Pradesh','Sheopur','476337','string','2024-11-07 06:43:49','string','2024-11-07 06:43:49');
+
+
+INSERT INTO subject_table (sub_code, sub_name, created_at, created_by, updated_at, updated_by)
+VALUES (101, "MATH", NOW(), "admin", NOW(), "admin"),
+(102, "ENGLIS", NOW(), "admin", NOW(), "admin"),
+(103, "HINDI", NOW(), "admin", NOW(), "admin"),
+(104, "URDU", NOW(), "admin", NOW(), "admin"),
+(105, "SANSKRIT", NOW(), "admin", NOW(), "admin"),
+(106, "SOCIAL SCIENCE", NOW(), "admin", NOW(), "admin"),
+(107, "SCIENCE", NOW(), "admin", NOW(), "admin");
+
+
+INSERT INTO student_subject_table(student_id, sub_id, created_by, created_at, updated_by, updated_at)
+VALUES('1','1','admin',NOW(),'admin',NOW()),
+('1', '2', 'admin', NOW(), 'admin', NOW()),
+('1', '3', 'admin', NOW(), 'admin', NOW()),
+('1', '7', 'admin', NOW(), 'admin', NOW());
+
+
+INSERT INTO `student_table` (`id`, `first_name`, `middle_name`, `last_name`, `father_name`, `mother_name`, `school_name`, `class_name`, `dob`, `gender`, `contact_num`, `email`, `address_id`, `is_active`, `image_url`, `created_by`, `created_at`, `updated_by`, `updated_at`) 
+VALUES('1','Shahbaz','Ali','Khan','Saddam Khan','Shahnaj Bano','Baby Buds','1','2021-03-05','male','9874563210','shahbazalikhan@gmail.com','1','1','man.png','string','2024-11-07 06:35:15','string','2024-11-07 06:35:15');
+

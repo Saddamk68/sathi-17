@@ -1,104 +1,105 @@
 package com.sathi.sim.domain;
 
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Set;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.annotation.CreatedBy;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.LastModifiedBy;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import org.springframework.data.relational.core.mapping.Column;
+import org.springframework.data.relational.core.mapping.Table;
 
 import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EntityListeners;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import lombok.Data;
 
 @Data
-@Entity
-@Table(name = "student_table")
-@EntityListeners(AuditingEntityListener.class)
+@Table("student_table")
 public class Student {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "id", nullable = false)
+	@Column("id")
 	private Long studentId;
 
-	@Column(name = "first_name", nullable = false, length = 30)
+	@Column("first_name")
 	private String firstName;
 
-	@Column(name = "middle_name", length = 30)
+	@Column("middle_name")
 	private String middleName;
 
-	@Column(name = "last_name", nullable = false, length = 30)
+	@Column("last_name")
 	private String lastName;
 
-	@Column(name = "father_name", nullable = false)
+	@Column("father_name")
 	private String fatherName;
 
-	@Column(name = "mother_name", nullable = false)
+	@Column("mother_name")
 	private String motherName;
 
 	@Temporal(TemporalType.DATE)
-	@Column(name = "dob", nullable = false)
-	private Date dob;
+	@Column("dob")
+	private LocalDate dob;
 
-	@Column(name = "gender", nullable = false)
+	@Column("gender")
 	private String gender;
 
-	@Column(name = "school_name")
+	@Column("school_name")
 	private String schoolName;
 
-	@Column(name = "class_name")
+	@Column("class_name")
 	private Integer className;
 
-	@Column(name = "contact_num")
+	@Column("contact_num")
 	private String contactNum;
 
-	@Column(name = "email", length = 50)
+	@Column("email")
 	private String email;
 
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "address_id", referencedColumnName = "id")
-	private Address address;
+//	@ManyToOne(cascade = CascadeType.ALL)
+//	@JoinColumn(name = "address_id", referencedColumnName = "id")
+//	private Address address;
+//
+//	@ManyToMany(cascade = CascadeType.ALL)
+//	@JoinTable(name = "student_subject_table", 
+//		joinColumns = @JoinColumn(name = "student_id"), 
+//		inverseJoinColumns = @JoinColumn(name = "sub_id"))
+//	private Set<Subject> subjects;
+	
+	@Column("address_id")
+	private Long addressId;
 
-	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "student_subject_table", joinColumns = @JoinColumn(name = "student_id"), inverseJoinColumns = @JoinColumn(name = "sub_id"))
-	private Set<Subject> subjects;
-
-	@Column(name = "is_active", nullable = false, columnDefinition = "TINYINT(1)")
+	@Column("is_active")
 	private Boolean isActive;
 
-	@Column(name = "image_url")
+	@Column("image_url")
 	private String imageUrl;
 
 	@CreationTimestamp
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "created_at")
-	private Date createdAt;
+	@Column("created_at")
+	private LocalDateTime createdAt;
 
-	@Column(name = "created_by")
+	@Column("created_by")
 	@CreatedBy
 	private String createdBy;
 
 	@UpdateTimestamp
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "updated_at")
-	private Date updatedAt;
+	@Column("updated_at")
+	private LocalDateTime updatedAt;
 
-	@Column(name = "updated_by")
+	@Column("updated_by")
 	@LastModifiedBy
 	private String updatedBy;
 

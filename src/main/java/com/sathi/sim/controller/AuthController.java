@@ -28,7 +28,7 @@ public class AuthController {
 	AuthController(AuthService authService) {
 		this.authService = authService;
 	}
-
+	
 	@GetMapping(value = "/signup")
 	public String showSignUpPage(ModelMap model) {
 		model.addAttribute("user", new User());
