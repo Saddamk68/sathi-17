@@ -1,0 +1,13 @@
+{
+  "studentId": "100001",
+  "firstName": "John",
+  "middleName": "Doe",
+  "lastName": "Smith",
+  "gender": "Male",
+  "dob": "2000-01-01",
+  "schoolName": "Springfield High",
+  "className": 10,
+  "contactNum": "1234567890",
+  "email": "john.doe@example.com",
+  "isActive": true
+}
