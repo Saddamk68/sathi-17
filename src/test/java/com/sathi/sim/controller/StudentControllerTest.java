@@ -37,7 +37,7 @@ public class StudentControllerTest {
     private StudentController studentController;
 
     @Mock
-    private StudentService studentService;
+    private StudentService mockStudentService;
 
     private MockMvc mockMvc;
 
@@ -92,7 +92,7 @@ public class StudentControllerTest {
         Student student = getStudentData();
         StudentDTO studentDTO = getStudentDTOData();
 
-        when(studentService.insertStudentDetail(any(Student.class))).thenReturn(Mono.just(studentDTO));
+        when(mockStudentService.insertStudentDetail(any(Student.class))).thenReturn(Mono.just(studentDTO));
 
         mockMvc.perform(post("/api/v1/student")
                         .contentType(MediaType.APPLICATION_JSON)
@@ -100,7 +100,7 @@ public class StudentControllerTest {
                 .andExpect(status().isCreated());
 //                .andExpect(jsonPath("$.firstName").value("John"));
 
-        verify(studentService, times(1)).insertStudentDetail(any(Student.class));
+        verify(mockStudentService, times(1)).insertStudentDetail(any(Student.class));
     }
 
     @Test
@@ -108,7 +108,7 @@ public class StudentControllerTest {
         Student student = getStudentData();
         StudentDTO studentDTO = getStudentDTOData();
 
-        when(studentService.updateStudentDetails(any(Student.class))).thenReturn(Mono.just(studentDTO));
+        when(mockStudentService.updateStudentDetails(any(Student.class))).thenReturn(Mono.just(studentDTO));
 
         mockMvc.perform(put("/api/v1/student")
                         .contentType(MediaType.APPLICATION_JSON)
@@ -116,57 +116,57 @@ public class StudentControllerTest {
                 .andExpect(status().isOk());
 //                .andExpect(jsonPath("$.firstName").value("John"));
 
-        verify(studentService, times(1)).updateStudentDetails(any(Student.class));
+        verify(mockStudentService, times(1)).updateStudentDetails(any(Student.class));
     }
 
     @Test
     void testRemoveStudentDetails() throws Exception {
-        doNothing().when(studentService).removeStudentDetails(anyLong());
+        doNothing().when(mockStudentService).removeStudentDetails(anyLong());
 
         mockMvc.perform(delete("/api/v1/student/{studentId}", 1L))
                 .andExpect(status().isOk());
 
-        verify(studentService, times(1)).removeStudentDetails(1L);
+        verify(mockStudentService, times(1)).removeStudentDetails(1L);
     }
 
     @Test
     void testGetStudentDetailByStudentId() throws Exception {
         StudentDTO studentDTO = getStudentDTOData();
 
-        when(studentService.getStudentDetailByStudentId(anyLong())).thenReturn(Mono.just(studentDTO));
+        when(mockStudentService.getStudentDetailByStudentId(anyLong())).thenReturn(Mono.just(studentDTO));
 
         mockMvc.perform(get("/api/v1/student/{id}", 1L))
                 .andExpect(status().isOk());
 //                .andExpect(jsonPath("$.firstName").value("John"));
 
-        verify(studentService, times(1)).getStudentDetailByStudentId(1L);
+        verify(mockStudentService, times(1)).getStudentDetailByStudentId(1L);
     }
 
     @Test
     void testSearchStudentByFirstName() throws Exception {
         StudentDTO studentDTO = getStudentDTOData();
 
-        when(studentService.searchStudentByFirstName(anyString())).thenReturn(Flux.just(studentDTO));
+        when(mockStudentService.searchStudentByFirstName(anyString())).thenReturn(Flux.just(studentDTO));
 
         mockMvc.perform(get("/api/v1/student/getStudentByName")
                         .param("name", "John"))
                 .andExpect(status().isOk());
 //                .andExpect(jsonPath("$[0].firstName").value("John"));
 
-        verify(studentService, times(1)).searchStudentByFirstName("John");
+        verify(mockStudentService, times(1)).searchStudentByFirstName("John");
     }
 
     @Test
     void testGetAllActiveStudent() throws Exception {
         StudentDTO studentDTO = getStudentDTOData();
 
-        when(studentService.getAllActiveStudent()).thenReturn(Flux.just(studentDTO));
+        when(mockStudentService.getAllActiveStudent()).thenReturn(Flux.just(studentDTO));
 
         mockMvc.perform(get("/api/v1/student"))
                 .andExpect(status().isOk());
 //                .andExpect(jsonPath("$[0].firstName").value("John"));
 
-        verify(studentService, times(1)).getAllActiveStudent();
+        verify(mockStudentService, times(1)).getAllActiveStudent();
     }
 
 }
