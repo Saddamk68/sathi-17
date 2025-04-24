@@ -52,7 +52,7 @@ public class StudentController {
 		return new ResponseEntity<>(studentService.getStudentDetailByStudentId(id), HttpStatus.OK);
 	}
 
-	@GetMapping("/getStudenByName")
+	@GetMapping("/getStudentByName")
 	public ResponseEntity<Flux<StudentDTO>> searchStudentByFirstName(@RequestParam(name = "name") String name) {
 		return new ResponseEntity<>(studentService.searchStudentByFirstName(name), HttpStatus.OK);
 	}

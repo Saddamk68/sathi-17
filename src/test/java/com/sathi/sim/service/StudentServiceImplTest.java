@@ -8,7 +8,6 @@ import com.sathi.sim.exception.StudentDetailsNotFound;
 import com.sathi.sim.mapper.StudentMapper;
 import com.sathi.sim.repository.CustomStudentRepository;
 import com.sathi.sim.repository.StudentRepository;
-import com.sathi.sim.service.impl.StudentServiceImpl;
 import com.sathi.sim.util.Constants;
 import com.sathi.sim.validat.ValidateStudentDetails;
 import org.junit.jupiter.api.BeforeEach;
