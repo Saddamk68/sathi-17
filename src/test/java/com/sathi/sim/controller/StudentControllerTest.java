@@ -31,15 +31,15 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-class StudentControllerTest {
+public class StudentControllerTest {
 
-    private MockMvc mockMvc;
+    @InjectMocks
+    private StudentController studentController;
 
     @Mock
     private StudentService studentService;
 
-    @InjectMocks
-    private StudentController studentController;
+    private MockMvc mockMvc;
 
     private ObjectMapper objectMapper;
 
